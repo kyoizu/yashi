@@ -6,6 +6,8 @@ const prefix = '/';
 
 const fs = require('fs');
 
+const ytdl = require('ytdl-core');
+
 client.commands = new discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -32,7 +34,12 @@ client.on('message', message =>{
         client.commands.get('yashi').execute(message, args);
     }
     else if(command === 'halo'){
+        if(message.member.roles.cache.has('769836747533713438')){
+            message.channel.send('okaeri goshujin ^-^');
+        }
+        else{
         message.channel.send('Bacot Kontol!!');
+        }
     }
     else if(command === 'baca'){
         if (!args.length){
@@ -43,4 +50,4 @@ client.on('message', message =>{
 });
 
 
-client.login(process.env.token);
+client.login('NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4');
