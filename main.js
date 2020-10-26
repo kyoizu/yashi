@@ -39,7 +39,7 @@ client.on('message', message =>{
     else if(command === 'baca'){
         const amount = parseInt(args[0]);
 
-        if (!args[0].length){
+        if (!args[0]){
             return message.channel.send(`https://www.nhentai.net/`);
         }
         else if(isNaN(amount)){
