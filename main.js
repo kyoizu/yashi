@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const discord = require('discord.js'); //up
 const client = new discord.Client();
 const prefix = '/';
 const fs = require('fs');
