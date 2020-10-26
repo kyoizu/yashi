@@ -59,12 +59,12 @@ client.on('message', message =>{
         return message.reply(`https://paus.unpad.ac.id/oauth/sign-in`);
     }
     else if(command === 'profpic'){
+        const avatarlist =  message.mentions.users.map(user =>{
+            return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
+        });
 
         if(message.member.roles.cache.has('769836747533713438')){
-            const avatarlist =  message.mentions.users.map(user =>{
-                return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
-            });
-
+            
             if(!message.mentions.users.size){
                 return message.channel.send(`Ini profile picnya goshujin-sama >///< <${message.author.displayAvatarURL({format: 'png', dynamic: true})}>`);
             }
