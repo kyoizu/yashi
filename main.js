@@ -64,7 +64,6 @@ client.on('message', message =>{
         });
 
         if(message.member.roles.cache.has('769836747533713438')){
-            
             if(!message.mentions.users.size){
                 return message.channel.send(`Ini profile picnya goshujin-sama >///< <${message.author.displayAvatarURL({format: 'png', dynamic: true})}>`);
             }
