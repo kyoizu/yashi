@@ -81,5 +81,3 @@ client.on('message', message =>{
 
 
 client.login(process.env.token);
-
-// afsbc04764
