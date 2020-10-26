@@ -60,7 +60,6 @@ client.on('message', message =>{
     }
     else if(command === 'profpic'){
 
-
         if(message.member.roles.cache.has('769836747533713438')){
             const avatarlist =  message.mentions.users.map(user =>{
                 return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
