@@ -69,10 +69,12 @@ client.on('message', message =>{
             }
             message.channel.send(avatarlist);
         }
-        else if(!message.mentions.users.size){
-            return message.channel.send(`Profile picture mu ini <${message.author.displayAvatarURL({format: `png`, dynamic: true})}>`);
+        else if(!message.member.roles.cache.has('769836747533713438')){
+            if(!message.mentions.users.size){
+                return message.channel.send(`Profile picture mu ini <${message.author.displayAvatarURL({format: `png`, dynamic: true})}>`);
+            }
+            message.channel.send(avatarlist);
         }
-        message.channel.send(avatarlist);
     }
     else if(command === 'help'){
         client.commands.get('help').execute(message, args);
