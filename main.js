@@ -59,7 +59,7 @@ client.on('message', message =>{
         return message.reply(`https://paus.unpad.ac.id/oauth/sign-in`);
     }
     else if(command === 'profpic'){
-        const avatarlist =  message.mentions.users.map(user =>{
+        const avatarlist =  message.mentions.users.send(user =>{
             return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
         });
 
