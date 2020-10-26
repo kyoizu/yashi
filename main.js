@@ -48,10 +48,13 @@ client.on('message', message =>{
         message.channel.send(`mangga kang, https://www.nhentai.net/g/${args}`);
     }
     else if(command === 'tpb'){
-        return message.channel.send(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
+        return message.reply(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
     }
     else if(command === 'pacis'){
-        return message.channel.send(`https://paus.unpad.ac.id/oauth/sign-in`);
+        return message.reply("https://paus.unpad.ac.id/oauth/sign-in");
+    }
+    else if(command === 'help'){
+        client.commands.get('help').execute(message, args);
     }
 });
 
