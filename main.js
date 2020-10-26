@@ -1,11 +1,7 @@
 const discord = require('discord.js');
-
 const client = new discord.Client();
-
 const prefix = '/';
-
 const fs = require('fs');
-
 const ytdl = require('ytdl-core');
 
 client.commands = new discord.Collection();
@@ -13,7 +9,6 @@ client.commands = new discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
     const command = require(`./commands/${file}`);
-
     client.commands.set(command.name, command);
 }
 
@@ -42,16 +37,26 @@ client.on('message', message =>{
         }
     }
     else if(command === 'baca'){
-        if (!args.length){
+        const amount = parseInt(args[0]);
+
+        if (!args[0].length){
             return message.channel.send(`https://www.nhentai.net/`);
         }
-        message.channel.send(`mangga kang, https://www.nhentai.net/g/${args}`);
+        else if(isNaN(amount)){
+            message.channel.send(`mangga kang, https://www.nhentai.net/tag/${args[0]}`);
+            message.channel.send('Jangan lupa nyalain VPNnya ya, kaka cabul ☝( ◠‿◠ )☝');
+        }
+        else{
+            message.channel.send(`Mangga kang, https://www.nhentai.net/g/${args[0]}`);
+            message.channel.send('Jangan lupa nyalain VPNnya ya, kaka cabul ☝( ◠‿◠ )☝');
+        }
+
     }
     else if(command === 'tpb'){
         return message.reply(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
     }
     else if(command === 'pacis'){
-        return message.reply('https://paus.unpad.ac.id/oauth/sign-in');
+        return message.reply("https://paus.unpad.ac.id/oauth/sign-in");
     }
     else if(command === 'help'){
         client.commands.get('help').execute(message, args);
@@ -59,4 +64,4 @@ client.on('message', message =>{
 });
 
 
-client.login(process.env.token);
+client.login('NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4');
