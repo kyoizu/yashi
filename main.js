@@ -62,17 +62,19 @@ client.on('message', message =>{
 
 
         if(message.member.roles.cache.has('769836747533713438')){
+            const avatarlist =  message.mentions.users.map(user =>{
+                return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
+            });
+
             if(!message.mentions.users.size){
                 return message.channel.send(`Ini profile picnya goshujin-sama >///< <${message.author.displayAvatarURL({format: 'png', dynamic: true})}>`);
             }
-            const taggedUser = message.mentions.users.first();
-            return message.channel.send(`Profile picturenya ${taggedUser.username} ini <${message.taggedUser.displayAvatarURL({format: `png`, dynamic: true})}>`);
+            message.channel.send(avatarlist);
         }
         else if(!message.mentions.users.size){
             return message.channel.send(`Profile picture mu ini <${message.author.displayAvatarURL({format: `png`, dynamic: true})}>`);
         }
-        const taggedUser = message.mentions.users.first();
-        return message.channel.send(`Profile picturenya ${taggedUser.username} ini <${message.taggedUser.displayAvatarURL({format: `png`, dynamic: true})}>`);
+        message.channel.send(avatarlist);
     }
     else if(command === 'help'){
         client.commands.get('help').execute(message, args);
