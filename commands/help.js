@@ -10,3 +10,4 @@ module.exports = {
         message.channel.send("/help (List command)");
     }
 }
+//a
