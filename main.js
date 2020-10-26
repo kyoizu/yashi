@@ -30,7 +30,7 @@ client.on('message', message =>{
     }
     else if(command === 'halo'){
         if(message.member.roles.cache.has('769836747533713438')){
-            message.channel.send('okaeri goshujin ^-^');
+            message.channel.send("okaeri goshujin ^-^");
         }
         else{
         message.channel.send('Bacot Kontol!!');
