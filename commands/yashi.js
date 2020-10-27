@@ -10,7 +10,7 @@ module.exports = {
         }
         else{
             message.reply('Anda siapa?');
-            
+            message.channel.send(`Pakai prefix \`${prefix}\` untuk command, /help untuk list command`)
         }
     }
 }

@@ -1,4 +1,6 @@
 const discord = require('discord.js'); //up
+const {Client, MessageAttachment, MessageEmbed} = require('discord.js');
+const bot = new Client();
 const client = new discord.Client();
 const prefix = '/';
 const fs = require('fs');
@@ -33,53 +35,54 @@ client.on('message', message =>{
             message.channel.send("okaeri goshujin ^-^");
         }
         else{
-        message.channel.send('Bacot Kontol!!');
+            message.channel.send('Bacot Kontol!!');
         }
     }
     else if(command === 'baca'){
-        const amount = parseInt(args[0]);
-
-        if (!args[0]){
-            return message.channel.send(`https://www.nhentai.net/`);
-        }
-        else if(isNaN(amount)){
-            message.channel.send(`mangga kang, https://www.nhentai.net/tag/${args[0]}`);
-            message.channel.send("Jangan lupa nyalain VPNnya ya, kaka cabul ☝( ◠‿◠ )☝");
-        }
-        else{
-            message.channel.send(`Mangga kang, https://www.nhentai.net/g/${args[0]}`);
-            message.channel.send('Jangan lupa nyalain VPNnya ya, kaka cabul ☝( ◠‿◠ )☝');
-        }
-
+        client.commands.get('baca').execute(message, args);
     }
     else if(command === 'tpb'){
         return message.reply(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
     }
     else if(command === 'pacis'){
-        return message.reply(`https://paus.unpad.ac.id/oauth/sign-in`);
+        return message.reply(`https://students.unpad.ac.id/pacis/`);
     }
     else if(command === 'profpic'){
-        const avatarlist =  message.mentions.users.map(user =>{
-            return `Profile picturenya ${user.username} ini <${user.displayAvatarURL({format: `png`, dynamic: true})}> `;
-        });
-
-        if(message.member.roles.cache.has('769836747533713438')){
-            if(!message.mentions.users.size){
-                return message.channel.send(`Ini profile picnya goshujin-sama >///< <${message.author.displayAvatarURL({format: `png`, dynamic: true})}>`);
-            }
-            message.channel.send(avatarlist);
-        }
-        else if(!message.member.roles.cache.has('769836747533713438')){
-            if(!message.mentions.users.size){
-                return message.channel.send(`Profile picture mu ini <${message.author.displayAvatarURL({format: `png`, dynamic: true})}>`);
-            }
-            message.channel.send(avatarlist);
-        }
+        client.commands.get('profpic').execute(message, args);
     }
     else if(command === 'help'){
         client.commands.get('help').execute(message, args);
     }
+    else if(command === 'ty'){
+        const taggedUser = message.mentions.users.first();
+        if(message.member.roles.cache.has('769836747533713438')){
+            if(message.mentions.users.size){
+                const Embed = new discord.MessageEmbed()
+                .setTitle(`Halo ${taggedUser.username}, Goshujin-sama mengucapkan terima kasih kepadamu!`)
+                .setColor(0xFF0000)
+                .setDescription(`ありがとうございました (＾▽＾)`)
+
+                taggedUser.send(Embed);
+            }
+            else if(!message.mentions.users.size){
+                message.channel.send(`Goshujin-sama mengucapakan terima kasih kepada semuanya!!!`);
+            }
+        }
+        else if(message.mentions.users.size){
+            const Embed = new discord.MessageEmbed()
+            .setTitle(`Halo ${taggedUser.username}, ${message.author.username} mengucapakan terima kasih kepadamu!`)
+            .setColor(0xFF0000)
+            .setDescription(`ありがとうございました (＾▽＾)`)
+
+            taggedUser.send(Embed);
+        }
+        else if(!message.mentions.users.size){
+            message.channel.send(`Terima kasih semuanya!!!`);
+        }
+    }
 });
 
 
-client.login(process.env.token);
+client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4`); //NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4
+
+// afsbc04764
