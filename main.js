@@ -35,7 +35,7 @@ client.on('message', message =>{
             message.channel.send("okaeri goshujin ^-^");
         }
         else{
-            message.channel.send('Bacot Kontol!!');
+            message.channel.send(`Bacot Kontol!!`);
         }
     }
     else if(command === 'baca'){
