@@ -30,6 +30,15 @@ client.on('message', message =>{
     else if(command === 'yashi'){
         client.commands.get('yashi').execute(message, args);
     }
+    else if(command === 'baca'){
+        client.commands.get('baca').execute(message, args);
+    }
+    else if(command === 'profpic'){
+        client.commands.get('profpic').execute(message, args);
+    }
+    else if(command === 'help'){
+        client.commands.get('help').execute(message, args);
+    }
     else if(command === 'halo'){
         if(message.member.roles.cache.has('769836747533713438')){
             message.channel.send("okaeri goshujin ^-^");
@@ -38,20 +47,11 @@ client.on('message', message =>{
             message.channel.send(`Bacot Kontol!!`);
         }
     }
-    else if(command === 'baca'){
-        client.commands.get('baca').execute(message, args);
-    }
     else if(command === 'tpb'){
         return message.reply(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
     }
     else if(command === 'pacis'){
         return message.reply(`https://students.unpad.ac.id/pacis/`);
-    }
-    else if(command === 'profpic'){
-        client.commands.get('profpic').execute(message, args);
-    }
-    else if(command === 'help'){
-        client.commands.get('help').execute(message, args);
     }
     else if(command === 'ty'){
         const taggedUser = message.mentions.users.first();
