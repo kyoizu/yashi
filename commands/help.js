@@ -13,8 +13,8 @@ module.exports =
                 {name: `/Help`, value: `List commandnya Yashi`},
                 {name: `/tpb`, value: `Link absen TPB`},
                 {name: `/pacis`, value: `link ke PACIS`},
-                {name: `/baca + 'kode 6 digit' || 'genre fav'`, value: `Baca komik di website ksukaan kita`},
-                {name: `/profpic + 'tag user`, value: 'Liat profile picture orang lain'},
+                {name: `/baca + 'kode 6 digit' || 'genre fav`, value: `Baca komik di website ksukaan kita`},
+                {name: `/profpic + 'tag user`, value: `Liat profile picture orang lain`},
                 {name: `/ty + 'tag user'`, value: `Ucapakan terima kasih ke orang yang di-tag`},
                 {name: `/halo || /yashi`, value: 'Sapa Yashi ^-^'}
             )

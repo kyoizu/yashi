@@ -44,7 +44,7 @@ client.on('message', message =>{
             message.channel.send("okaeri goshujin ^-^");
         }
         else{
-            message.channel.send(`Bacot Kontol!!`);
+            message.channel.send(`Halo juga, Yashi sayang kamu ^-^`);
         }
     }
     else if(command === 'tpb'){
