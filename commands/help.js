@@ -16,7 +16,7 @@ module.exports =
                 {name: `/baca + 'kode 6 digit' || 'genre fav'`, value: `Baca komik di website ksukaan kita`},
                 {name: `/profpic + 'tag user'`, value: `Liat profile picture orang lain`},
                 {name: `/ty + 'tag user'`, value: `Ucapakan terima kasih ke orang yang di-tag`},
-                {name: `/halo || /yashi`, value: 'Sapa Yashi ^-^'}
+                {name: `/halo || /yashi`, value: `Sapa Yashi ^-^`}
             )
 
         message.channel.send(listEmbed);
