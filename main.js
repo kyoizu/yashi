@@ -79,7 +79,7 @@ client.on('message', message =>{
             taggedUser.send(Embed);
         }
         else if(!message.mentions.users.size){
-            message.channel.send('Terima kasih semuanya!!!');
+            message.channel.send(`Terima kasih semuanya!!!`);
         }
     }
     else if(command === `show`)
