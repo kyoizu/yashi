@@ -82,7 +82,7 @@ client.on('message', message =>{
             message.channel.send(`Terima kasih semuanya!!!`);
         }
     }
-    else if(command === `show`)
+    else if(command === 'show')
     {
 
     var options = {
