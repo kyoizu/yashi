@@ -86,7 +86,7 @@ client.on('message', message =>{
     {
 
     var options = {
-        url: "https://yandex.com/images/search?text=" + args[0] + args [1],
+        url: "http://results.dogpile.com/serp?qc=images&q=" + args[0] + args [1],
         method: "GET",
         headers: {
             "Accept": "text/html",
