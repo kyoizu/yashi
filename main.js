@@ -67,7 +67,7 @@ client.on('message', message =>{
                 taggedUser.send(Embed);
             }
             else if(!message.mentions.users.size){
-                message.channel.send(`Goshujin-sama mengucapakan terima kasih kepada semuanya!!!`);
+                message.channel.send('Goshujin-sama mengucapakan terima kasih kepada semuanya!!!');
             }
         }
         else if(message.mentions.users.size){
