@@ -1,10 +1,12 @@
+const { execFile } = require('child_process');
 const discord = require('discord.js'); //up
 const {Client, MessageAttachment, MessageEmbed} = require('discord.js');
 const bot = new Client();
 const client = new discord.Client();
 const prefix = '/';
 const fs = require('fs');
-const ytdl = require('ytdl-core');
+const cheerio = require('cheerio');
+const request = require('request');
 
 client.commands = new discord.Collection();
 
@@ -44,7 +46,7 @@ client.on('message', message =>{
             message.channel.send("okaeri goshujin ^-^");
         }
         else{
-            message.channel.send(`Halo juga, Yashi sayang kamu ^-^`);
+            message.channel.send(`Halo juga, Yashi sayang kamu <3`);
         }
     }
     else if(command === 'tpb'){
@@ -79,6 +81,41 @@ client.on('message', message =>{
         else if(!message.mentions.users.size){
             message.channel.send('Terima kasih semuanya!!!');
         }
+    }
+    else if(command === `show`)
+    {
+
+    var options = {
+        url: "https://yandex.com/images/search?text=" + args[0] + args [1],
+        method: "GET",
+        headers: {
+            "Accept": "text/html",
+            "User-Agent": "Chrome"
+        }
+    };
+    request(options, function(error, response, responseBody) {
+        if (error) {
+            return;
+        }
+ 
+ 
+        $ = cheerio.load(responseBody);
+ 
+ 
+        var links = $(".image a.link");
+ 
+        var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+       
+        console.log(urls);
+ 
+        if (!urls.length) {
+           
+            return;
+        }
+ 
+
+        message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
+    });
     }
 });
 
