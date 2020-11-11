@@ -67,7 +67,7 @@ client.on('message', message =>{
                 taggedUser.send(Embed);
             }
             else if(!message.mentions.users.size){
-                message.channel.send('Goshujin-sama mengucapakan terima kasih kepada semuanya!!!');
+                message.channel.send(`Goshujin-sama mengucapakan terima kasih kepada semuanya!!!`);
             }
         }
         else if(message.mentions.users.size){
@@ -79,45 +79,44 @@ client.on('message', message =>{
             taggedUser.send(Embed);
         }
         else if(!message.mentions.users.size){
-            message.channel.send(`Terima kasih semuanya!!!`);
+            message.channel.send('Terima kasih semuanya!!!');
         }
     }
-    else if(command === 'show')
+    else if(command === `show`)
     {
-
-    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + args[0] + args [1],
-        method: "GET",
-        headers: {
-            "Accept": "text/html",
-            "User-Agent": "Chrome"
-        }
-    };
-    request(options, function(error, response, responseBody) {
-        if (error) {
-            return;
-        }
- 
- 
-        $ = cheerio.load(responseBody);
- 
- 
-        var links = $(".image a.link");
- 
-        var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-       
-        console.log(urls);
- 
-        if (!urls.length) {
+        var options = {
+            url: "http://results.dogpile.com/serp?qc=images&q=" + args,
+            method: "GET",
+            headers: {
+                "Accept": "text/html",
+                "User-Agent": "Chrome"
+            }
+        };
+        request(options, function(error, response, responseBody) {
+            if (error) {
+                return;
+            }
+     
+     
+            $ = cheerio.load(responseBody);
+     
+     
+            var links = $(".image a.link");
+     
+            var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
            
-            return;
-        }
- 
-
-        message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
-    });
+            console.log(urls);
+     
+            if (!urls.length) {
+               
+                return;
+            }
+     
+            message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
+        });
     }
 });
+
 
 
 client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4`); //NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4
