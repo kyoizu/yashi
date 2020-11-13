@@ -85,7 +85,7 @@ client.on('message', message =>{
     else if(command === `show`)
     {
         var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q=" + args,
+            url: 'http://results.dogpile.com/serp?qc=images&q=' + args,
             method: "GET",
             headers: {
                 "Accept": "text/html",
