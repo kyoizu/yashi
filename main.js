@@ -82,10 +82,24 @@ client.on('message', message =>{
             message.channel.send('Terima kasih semuanya!!!');
         }
     }
+    else if(command === `yshb`)
+    {
+        let msgargs = args.slice(0).join(" ");
+
+        message.delete();
+        message.channel.send("**"+msgargs+"**");
+    }
+    else if(command === `ysh`)
+    {
+        let msgargs = args.slice(0).join(" ");
+
+        message.delete();
+        message.channel.send(msgargs);
+    }
     else if(command === `show`)
     {
         var options = {
-            url: 'http://results.dogpile.com/serp?qc=images&q=' + args,
+            url: "http://results.dogpile.com/serp?qc=images&q=" + args,
             method: "GET",
             headers: {
                 "Accept": "text/html",
