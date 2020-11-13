@@ -84,41 +84,12 @@ client.on('message', message =>{
     }
     else if(command === `show`)
     {
-        var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q=" + args,
-            method: "GET",
-            headers: {
-                "Accept": "text/html",
-                "User-Agent": "Chrome"
-            }
-        };
-        request(options, function(error, response, responseBody) {
-            if (error) {
-                return;
-            }
-     
-     
-            $ = cheerio.load(responseBody);
-     
-     
-            var links = $(".image a.link");
-     
-            var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-           
-            console.log(urls);
-     
-            if (!urls.length) {
-               
-                return;
-            }
-     
-            message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
-        });
+        client.commands.get('show').execute(message, args);
     }
 });
 
 
 
-client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4`); //NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4
+client.login(process.env.token);
 
 // afsbc04764
