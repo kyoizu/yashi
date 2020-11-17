@@ -49,11 +49,8 @@ client.on('message', message =>{
             message.channel.send(`Halo juga, Yashi sayang kamu <3`);
         }
     }
-    else if(command === 'tpb'){
-        return message.reply(`https://docs.google.com/forms/d/e/1FAIpQLSfJiEARWaYU5xNDSJ_EvqA6f0s8s4dbn5Vs7QXxBKejxOob9g/viewform`);
-    }
-    else if(command === 'pacis'){
-        return message.reply(`https://students.unpad.ac.id/pacis/`);
+    else if(command === 'link'){
+        client.commands.get('link').execute(message, args);
     }
     else if(command === 'ty'){
         const taggedUser = message.mentions.users.first();
@@ -99,7 +96,7 @@ client.on('message', message =>{
     else if(command === `show`)
     {
         var options = {
-            url: `http://results.dogpile.com/serp?qc=images&q=` + args,
+            url: "http://results.dogpile.com/serp?qc=images&q=" + args,
             method: "GET",
             headers: {
                 "Accept": "text/html",
@@ -133,6 +130,6 @@ client.on('message', message =>{
 
 
 
-client.login(process.env.token); //
+client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4`); //
 
 // afsbc04764
