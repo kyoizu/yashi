@@ -130,6 +130,6 @@ client.on('message', message =>{
 
 
 
-client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.-KElAbbmg1kCJyyelkz2DVe_lc4`); //
+client.login(process.env.token); //
 
 // afsbc04764
