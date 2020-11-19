@@ -135,6 +135,6 @@ client.on('message', async message => {
 
 
 
-client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.tmvCjBpyk3EhvoLca6YBZSANiAY`); //
+client.login(process.env.token); //
 
 // afsbc04764
