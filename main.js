@@ -30,8 +30,10 @@ client.on('message', async message => {
     {
         if(message.member.voice.channel && message.member.roles.cache.has('769836747533713438')) {
             message.delete();
+            let replies = ['heyhey.mp3', 'itzyhey.mp3']
+            let random = Math.floor(Math.random() * replies.length);
             const connection = await message.member.voice.channel.join();
-            connection.play('heyhey.mp3');
+            connection.play(replies[random]);
             setTimeout(() => {
                 connection.disconnect();
             }, 3000)
@@ -133,6 +135,6 @@ client.on('message', async message => {
 
 
 
-client.login(process.env.token); //
+client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.tmvCjBpyk3EhvoLca6YBZSANiAY`); //
 
 // afsbc04764
