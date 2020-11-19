@@ -1,4 +1,3 @@
-const { execFile } = require('child_process');
 const discord = require('discord.js'); //up
 const {Client, MessageAttachment, MessageEmbed} = require('discord.js');
 const bot = new Client();
@@ -7,6 +6,7 @@ const prefix = '/';
 const fs = require('fs');
 const cheerio = require('cheerio');
 const request = require('request');
+
 
 client.commands = new discord.Collection();
 
@@ -20,13 +20,24 @@ client.once('ready', () => {
     console.log('YASHI is here, goshujin-sama!');
 });
 
-client.on('message', message =>{
+client.on('message', async message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'ping'){
+    if(command === "hei")
+    {
+        if(message.member.voice.channel && message.member.roles.cache.has('769836747533713438')) {
+            message.delete();
+            const connection = await message.member.voice.channel.join();
+            connection.play('heyhey.mp3');
+            setTimeout(() => {
+                connection.disconnect();
+            }, 3000)
+        }
+    }   
+    else if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     }
     else if(command === 'yashi'){
@@ -107,22 +118,14 @@ client.on('message', message =>{
             if (error) {
                 return;
             }
-     
-     
+
             $ = cheerio.load(responseBody);
-     
-     
             var links = $(".image a.link");
-     
             var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-           
             console.log(urls);
-     
-            if (!urls.length) {
-               
+            if (!urls.length) {   
                 return;
             }
-     
             message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
         });
     }
