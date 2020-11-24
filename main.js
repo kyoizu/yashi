@@ -39,6 +39,17 @@ client.on('message', async message => {
             }, 3000)
         }
     }   
+    else if(command === "win")
+    {
+        if(message.member.voice.channel && message.member.roles.cache.has('769836747533713438')) {
+            message.delete();
+            const connec = await message.member.voice.channel.join();
+            connec.play('ez4ence.mp3');
+            setTimeout(() => {
+                connec.disconnect();
+            }, 6500)
+        }
+    }
     else if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     }
