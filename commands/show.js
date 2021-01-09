@@ -1,3 +1,6 @@
+const cheerio = require('cheerio');
+const request = require('request');
+
 module.exports = {
     name: 'show',
     description: "image api",
