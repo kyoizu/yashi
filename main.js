@@ -4,6 +4,8 @@ const bot = new Client();
 const client = new discord.Client();
 const prefix = '/';
 const fs = require('fs');
+const ytdl = require('ytdl-core');
+const ytSearch = require('yt-search');
 
 client.commands = new discord.Collection();
 
@@ -51,17 +53,10 @@ client.on('message', async message => {
             }, 6500)
         }
     }
-    else if(command === 'play')
+    else if(command == "absen")
     {
-        client.commands.get('play').execute(message, args);
-    }
-    else if(command === 'bye')
-    {
-        client.commands.get('bye').execute(message, args);
-    }
-    else if(command === 'clear')
-    {
-        client.commands.get('clear').execute(message, args);
+        message.delete();
+        message.reply(" Sudah mengisi absen");
     }
     else if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
@@ -134,10 +129,11 @@ client.on('message', async message => {
     {
         client.commands.get('show').execute(message, args);
     }
+    
 });
 
 
 
-client.login(process.env.token); //
+client.login(`NzY5NzU2OTg3NzU5OTE5MTE1.X5TqDw.ZtJB6nsiJS_iuQxnY-H6EM2SCmQ`); //
 
 // afsbc04764
