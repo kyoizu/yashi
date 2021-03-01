@@ -24,13 +24,14 @@ client.on('message', async message => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
+    const voicechan = message.member.voice.channel && message.member.roles.cache.has('769836747533713438');
 
     if(command === "hei")
     {
-        if(message.member.voice.channel && message.member.roles.cache.has('769836747533713438')) 
+        if(voicechan) 
         {
             message.delete();
-            let replies = ['heyhey.mp3', 'itzyhey.mp3']
+            let replies = ['./audio/heyhey.mp3', './audio/itzyhey.mp3']
             let random = Math.floor(Math.random() * replies.length);
             const connection = await message.member.voice.channel.join();
             connection.play(replies[random]);
@@ -40,13 +41,26 @@ client.on('message', async message => {
             }, 3000)
         }
     }  
+    if(command === 'h')
+    {
+        if(voicechan)
+        {
+            message.delete();
+            const connection = await message.member.voice.channel.join();
+            connection.play('./audio/yk.mp3');
+            setTimeout(() => 
+            {
+                connection.disconnect();
+            }, 11000)
+        }
+    }
     else if(command === "win")
     {
-        if(message.member.voice.channel && message.member.roles.cache.has('769836747533713438')) 
+        if(voicechan) 
         {
             message.delete();
             const connec = await message.member.voice.channel.join();
-            connec.play('ez4ence.mp3');
+            connec.play('./audio/ez4ence.mp3');
             setTimeout(() => 
             {
                 connec.disconnect();
