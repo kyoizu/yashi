@@ -2,9 +2,9 @@ const discord = require('discord.js'); //up
 const {Client} = require('discord.js');
 const bot = new Client();
 const client = new discord.Client();
-const prefix = '/';
+const prefix = '>';
 const fs = require('fs');
-const ytdl = require('ytdl-core');
+const ytdl = require('ytdl-core');S
 const ytSearch = require('yt-search');
 
 client.commands = new discord.Collection();
@@ -87,15 +87,12 @@ client.on('message', async message => {
     else if(command === 'help'){
         client.commands.get('help').execute(message, args);
     }
-    else if(command === 'halo'){
-        if(message.member.roles.cache.has('769836747533713438')){
-            message.channel.send("okaeri goshujin ^-^");
-        }
-        else{
+    else if(command === 'halo')
+    {
             message.channel.send(`Halo juga, Yashi sayang kamu <3`);
-        }
     }
-    else if(command === 'link'){
+    else if(command === 'link')
+    {
         client.commands.get('link').execute(message, args);
     }
     else if(command === 'ty'){
