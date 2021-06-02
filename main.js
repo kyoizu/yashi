@@ -4,7 +4,7 @@ const bot = new Client();
 const client = new discord.Client();
 const prefix = '>';
 const fs = require('fs');
-const ytdl = require('ytdl-core');S
+const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 
 client.commands = new discord.Collection();
@@ -145,6 +145,4 @@ client.on('message', async message => {
 
 
 
-client.login(process.env.token); //
-
-// afsbc04764
+client.login(process.env.token); 
