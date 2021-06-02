@@ -41,7 +41,7 @@ client.on('message', async message => {
             }, 3000)
         }
     }  
-    if(command === 'h')
+    if(command === 'hen')
     {
         if(voicechan)
         {
