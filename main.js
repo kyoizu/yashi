@@ -1,15 +1,12 @@
-const discord = require('discord.js'); //up
+const discord = require('discord.js');
 const {Client} = require('discord.js');
-const bot = new Client();
 const client = new discord.Client();
-const prefix = '/.';
+const prefix = ';';
 const fs = require('fs');
-const ytdl = require('ytdl-core');
-const ytSearch = require('yt-search');
 
 client.commands = new discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands/').filter((file) => file.endsWith('.js'));
 for(const file of commandFiles){
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
@@ -24,77 +21,63 @@ client.on('message', async message => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-    const voicechan = message.member.voice.channel && message.member.roles.cache.has('769836747533713438');
+    let msgargs = args.slice(0).join();
+    let result = msgargs.replace(',', ' ');
 
-    if(command === "hei")
-    {
-        if(voicechan) 
-        {
+    switch(command) {
+        case "absen":
             message.delete();
-            let replies = ['./audio/heyhey.mp3', './audio/itzyhey.mp3']
-            let random = Math.floor(Math.random() * replies.length);
-            const connection = await message.member.voice.channel.join();
-            connection.play(replies[random]);
-            setTimeout(() => 
-            {
-                connection.disconnect();
-            }, 3000)
-        }
-    }  
-    if(command === 'hnt')
-    {
-        if(voicechan)
-        {
-            message.delete();
-            const connection = await message.member.voice.channel.join();
-            connection.play('./audio/yk.mp3');
-            setTimeout(() => 
-            {
-                connection.disconnect();
-            }, 11000)
-        }
-    }
-    else if(command === "win")
-    {
-        if(voicechan) 
-        {
-            message.delete();
-            const connec = await message.member.voice.channel.join();
-            connec.play('./audio/ez4ence.mp3');
-            setTimeout(() => 
-            {
-                connec.disconnect();
-            }, 6500)
-        }
-    }
-    else if(command == "absen")
-    {
-        message.delete();
-        message.reply(" Sudah mengisi absen");
-    }
-    else if(command === 'ping'){
-        client.commands.get('ping').execute(message, args);
-    }
-    else if(command === 'yashi'){
-        client.commands.get('yashi').execute(message, args);
-    }
-    else if(command === 'baca'){
-        client.commands.get('baca').execute(message, args);
-    }
-    else if(command === 'profpic'){
-        client.commands.get('profpic').execute(message, args);
-    }
-    else if(command === 'help'){
-        client.commands.get('help').execute(message, args);
-    }
-    else if(command === 'halo')
-    {
+            message.reply(" Sudah mengisi absen");
+        break;
+        case "halo":
             message.channel.send(`Halo juga, Yashi sayang kamu <3`);
+        break;
+        case "ysh":
+            message.delete();
+            message.channel.send(result);
+        break;
+        case "yshb":
+            message.delete();
+            message.channel.send('***'+result+'***');
+        break;
+        case "hei":
+            client.commands.get('hei').execute(message);
+        break;
+        case "hentai":
+            client.commands.get('hentai').execute(message);
+        break;
+        case "win":
+            client.commands.get('win').execute(message);
+        break;
+        case "ping":
+            client.commands.get('ping').execute(message);
+        break;
+        case "baca":
+            client.commands.get('baca').execute(message, args);
+        break;
+        case "profpic":
+            client.commands.get('profpic').execute(message, args);
+        break;
+        case "help":
+            client.commands.get('help').execute(message);
+        break;
+        case "link":
+            client.commands.get('link').execute(message, args);
+        break;
+        case "show":
+            client.commands.get('show').execute(message, args);
+        break;
+        case ("play" || "p"):
+            client.commands.get('play').execute(message, args);
+        break;
     }
-    else if(command === 'link')
-    {
-        client.commands.get('link').execute(message, args);
-    }
+});
+
+
+
+client.login(process.env.token);
+
+    /*
     else if(command === 'ty'){
         const taggedUser = message.mentions.users.first();
         if(message.member.roles.cache.has('769836747533713438')){
@@ -121,30 +104,4 @@ client.on('message', async message => {
         else if(!message.mentions.users.size){
             message.channel.send('Terima kasih semuanya!!!');
         }
-    }
-    else if(command === `yshb`)
-    {
-        let msgargs = args.slice(0).join(" ");
-
-        message.delete();
-        message.channel.send("**"+msgargs+"**");
-    }
-    else if(command === `ysh`)
-    {
-        let msgargs = args.slice(0).join(" ");
-
-        message.delete();
-        message.channel.send(msgargs);
-    }
-    else if(command === `show`)
-    {
-        client.commands.get('show').execute(message, args);
-    }
-    
-});
-
-
-
-client.login(process.env.token); //
-
-// afsbc04764
+    }*/

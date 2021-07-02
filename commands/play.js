@@ -6,21 +6,21 @@ module.exports = {
     description: 'join n play',
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;
-
-        if(!voiceChannel) return message.channel.send("Join voice channel dulu dong");
-        const permis = voiceChannel.permissionsFor(message.client.user);
-        if(!permis.has('CONNECT')) return message.channel.send("sry, no access");
-        if(!permis.has('SPEAK')) return message.channel.send("sry, no access");
-        if(!args.length) return message.channel.send("Judulnya mana?");
-
-        const connection = await voiceChannel.join();
-        const vidfind = async (query) => {
-            const vidres = await ytSearch(query);
-
-            return (vidres.videos.length > 1) ? vidres.videos[0] : null;
+        if(!voiceChannel)
+        {
+            return message.channel.send("join voice channel dulu :ng::ab:")
         }
+        if(!args.length) 
+        {
+            return message.channel.send("Judulnya mana :ng::ab:")
+        }
+        const connection = await voiceChannel.join();
+        const vidFind = async(query) => {
+            const vidRes = await ytSearch(query);
+            return (vidRes.videos.length > 1) ? vidRes.videos[0] : null;
+        }
+        const video = await vidFind(args.join(' '))
 
-        const video = await vidfind(args.join(' '));
         if(video)
         {
             const stream = ytdl(video.url, {filter: 'audioonly'});
@@ -28,12 +28,9 @@ module.exports = {
             .on('finish', () => {
                 voiceChannel.leave();
             });
-
-            await message.reply(`now playing, ${video.title}`)
-        }
-        else{
-            message.channel.send("Sorry, content unavailabe")
+            await message.reply(`now playing ${video.title}`)
         }
     }
+
 
 }
