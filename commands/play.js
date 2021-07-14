@@ -20,10 +20,10 @@ module.exports = {
             return (vidRes.videos.length > 1) ? vidRes.videos[0] : null;
         }
         const video = await vidFind(args.join(' '))
+        const stream = ytdl(video.url, {filter: 'audioonly'});
 
         if(video)
         {
-            const stream = ytdl(video.url, {filter: 'audioonly'});
             connection.play(stream, {seek: 0, volume: 1})
             .on('finish', () => {
                 voiceChannel.leave();
@@ -31,6 +31,5 @@ module.exports = {
             await message.reply(`now playing ${video.title}`)
         }
     }
-
 
 }

@@ -23,6 +23,8 @@ client.on('message', async message => {
     const command = args.shift().toLowerCase();
     let msgargs = args.slice(0).join();
     let result = msgargs.replace(',', ' ');
+    client.user.setStatus('dnd');
+    client.user.setActivity('Darling Ohayo', { type: 'LISTENING' });
 
     switch(command) {
         case "absen":
@@ -67,9 +69,11 @@ client.on('message', async message => {
         case "show":
             client.commands.get('show').execute(message, args);
         break;
-        case ("play" || "p"):
+        case "play":
+        case "p":
             client.commands.get('play').execute(message, args);
         break;
+        
     }
 });
 
