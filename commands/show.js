@@ -17,22 +17,14 @@ module.exports = {
             if (error) {
                 return;
             }
+            $ = cheerio.load(responseBody);    
      
-     
-            $ = cheerio.load(responseBody);
-     
-     
-            var links = $(".image a.link");
-     
+            var links = $(".image a.link");     
             var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-           
             console.log(urls);
-     
-            if (!urls.length) {
-               
+            if (!urls.length) {               
                 return;
-            }
-     
+            }     
             message.channel.send( urls[Math.floor(Math.random() * urls.length)]);
         });
     }

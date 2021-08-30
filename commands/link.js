@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'link',
     description: "link kuliah",
-    execute(message, args)
+    execute(message)
     {
             const embed = new Discord.MessageEmbed()
                 .setColor(`#FF003E`)

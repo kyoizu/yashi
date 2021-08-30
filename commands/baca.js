@@ -2,7 +2,6 @@ module.exports = {
     name: 'baca',
     description: "Nhen",
     execute(message, args){
-        const amount = parseInt(args[0]);
 
         if (!args[0]){
             return message.channel.send(`https://www.nhentai.net/`);
